@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".SubActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:gravity="center"
+              tools:context=".SubActivity">
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="뽑기권 1개를 획득하였습니다!"
-        android:textSize="23sp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/got_a_coupon"
+            android:textSize="23sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
     <TextView
-        android:id="@+id/coupon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="현재 뽑기권 개수: "
-        android:textSize="15sp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        />
+            android:id="@+id/coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_coupon_count"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btn_re"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="다시 얻기"
-            />
+            android:gravity="center"
+            android:orientation="horizontal">
+
         <Button
-            android:id="@+id/btn_go"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="확인"
-            />
+                android:id="@+id/btn_re"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/get_it_back"
+                tools:ignore="ButtonStyle"/>
+
+        <Button
+                android:id="@+id/btn_go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ok"
+                tools:ignore="ButtonStyle"/>
     </LinearLayout>
 
 
