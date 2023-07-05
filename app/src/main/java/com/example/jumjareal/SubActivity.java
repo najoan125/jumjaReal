@@ -6,18 +6,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.webkit.*;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -28,24 +22,27 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class SubActivity extends AppCompatActivity {
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (globalDialog2 != null && globalDialog2.isShowing()){
+            globalDialog2.dismiss();
+        }
+    }
     WebView webView;
     AlertDialog globalDialog;
+    AlertDialog globalDialog2;
     final Bundle bundle = new Bundle();
     Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             Bundle bundle = msg.getData();
-            AlertDialog.Builder dlg = new AlertDialog.Builder(SubActivity.this);
-            dlg.setTitle("점자 뜻"); // 제목
-            dlg.setMessage("입력한 점자의 뜻: " + bundle.getString("translated")); // 메시지
-            dlg.setPositiveButton("확인", (dialog, which) -> {
-                Intent intent = new Intent(SubActivity.this, CompleteActivity.class);
-                MainActivity.coupon++;
-                startActivity(intent);
-                finish();
-            });
-            dlg.setCancelable(false);
-            dlg.show();
+            globalDialog2.setTitle("점자 뜻"); // 제목
+            globalDialog2.setMessage("입력한 점자의 뜻: " + bundle.getString("translated")); // 메시지
+            globalDialog2.setCancelable(false);
+            if (!isFinishing())
+                globalDialog2.show();
         }
     };
 
@@ -152,12 +149,28 @@ public class SubActivity extends AppCompatActivity {
         Button ok = findViewById(R.id.btn_ok);
         ok.setOnClickListener(view -> {
             if (userBrailles.length() != 0) {
+                //loading dialog
                 AlertDialog.Builder dlg = new AlertDialog.Builder(SubActivity.this);
                 globalDialog = dlg.create();
                 globalDialog.setTitle("로드 중..."); //제목
                 globalDialog.setMessage("로딩 중입니다. 잠시만 기다려주세요..."); // 메시지
                 globalDialog.setCancelable(false);
                 globalDialog.show();
+
+                //Show Braille Mean
+                AlertDialog.Builder dl = new AlertDialog.Builder(SubActivity.this);
+                dl.setPositiveButton("확인", (dialog, which) -> {
+                    globalDialog.dismiss();
+                    dialog.dismiss();
+                    globalDialog2.dismiss();
+                    Intent intent = new Intent(SubActivity.this, CompleteActivity.class);
+                    MainActivity.coupon++;
+                    startActivity(intent);
+                    finish();
+                });
+                globalDialog2 = dl.create();
+
+                //load translate from Braille to Text
                 try {
                     webView.loadUrl("https://t.hi098123.com/braille#share=1&text=" + URLEncoder.encode(userBrailles.toString(), "UTF-8"));
                 } catch (UnsupportedEncodingException e) {

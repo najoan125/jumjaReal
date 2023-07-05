@@ -3,10 +3,10 @@
     <item android:drawable="@drawable/frame22" android:duration="50" />
     <item android:drawable="@drawable/frame23" android:duration="50" />
     <item android:drawable="@drawable/frame24" android:duration="50" />
-    <item android:drawable="@drawable/frame25" android:duration="50" />
-    <item android:drawable="@drawable/frame26" android:duration="50" />
-    <item android:drawable="@drawable/frame27" android:duration="50" />
-    <item android:drawable="@drawable/frame28" android:duration="50" />
+    <item android:drawable="@drawable/frame25" android:duration="100" />
+    <item android:drawable="@drawable/frame26" android:duration="200" />
+    <item android:drawable="@drawable/frame27" android:duration="100" />
+    <item android:drawable="@drawable/frame28" android:duration="100" />
     <item android:drawable="@drawable/frame29" android:duration="50" />
     <item android:drawable="@drawable/frame30" android:duration="50" />
     <item android:drawable="@drawable/frame31" android:duration="50" />

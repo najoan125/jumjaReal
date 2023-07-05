@@ -18,4 +18,5 @@
     <string name="remove">지우기</string>
     <string name="put">입력</string>
     <string name="pickup_chest">뽑기상자</string>
+    <string name="pickup_item">Pickup_item</string>
 </resources>
