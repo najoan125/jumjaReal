@@ -1,9 +1,6 @@
 package com.example.jumjareal;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,8 +11,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.ByteArrayOutputStream;
-import java.net.URI;
 
 public class OnceActivity extends AppCompatActivity {
     int[] images = new int[]{R.drawable.bichon01, R.drawable.bichon02, R.drawable.bichon03,
@@ -23,6 +22,7 @@ public class OnceActivity extends AppCompatActivity {
                             R.drawable.welsh01, R.drawable.welsh02};
     int getId = 0;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,12 +68,10 @@ public class OnceActivity extends AppCompatActivity {
                 dlg.setTitle("뽑기권 부족"); //제목
                 dlg.setMessage("뽑기권을 모두 소진하셨습니다! 점자 번역 기능을 통해 뽑기권을 더 얻으세요!"); // 메시지
 //                버튼 클릭시 동작
-                dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(OnceActivity.this, SubActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                dlg.setPositiveButton("확인", (dialog, which) -> {
+                    Intent intent = new Intent(OnceActivity.this, SubActivity.class);
+                    startActivity(intent);
+                    finish();
                 });
                 dlg.show();
             }

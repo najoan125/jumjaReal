@@ -1,13 +1,11 @@
 package com.example.jumjareal;
 
-import android.app.Dialog;
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
-import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,18 +23,18 @@ import org.jsoup.nodes.Element;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SubActivity extends AppCompatActivity {
     WebView webView;
-    TextView convert;
     final Bundle bundle = new Bundle();
-    Handler handler = new Handler(){
+    Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
-        public void handleMessage(@NonNull Message msg) {
+        public void handleMessage(Message msg) {
             Bundle bundle = msg.getData();
             AlertDialog.Builder dlg = new AlertDialog.Builder(SubActivity.this);
-            dlg.setTitle("점자 뜻"); //제목
-            dlg.setMessage("입력한 점자의 뜻: "+bundle.getString("translated")); // 메시지
+            dlg.setTitle("점자 뜻"); // 제목
+            dlg.setMessage("입력한 점자의 뜻: " + bundle.getString("translated")); // 메시지
             dlg.setPositiveButton("확인", (dialog, which) -> {
                 Intent intent = new Intent(SubActivity.this, CompleteActivity.class);
                 MainActivity.coupon++;
@@ -49,6 +46,7 @@ public class SubActivity extends AppCompatActivity {
         }
     };
 
+
     public class MyJavascriptInterface {
         @JavascriptInterface
         public void getHtml(String html) {
@@ -56,10 +54,9 @@ public class SubActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     if (!html.isEmpty()) {
-                        Document doc = null;
-                        doc = Jsoup.parse(html);
+                        Document doc = Jsoup.parse(html);
                         Element element = doc.select("#plain div").first();
-                        bundle.putString("translated", element.text());
+                        bundle.putString("translated", Objects.requireNonNull(element).text());
                         Message msg = handler.obtainMessage();
                         msg.setData(bundle);
                         handler.sendMessage(msg);
@@ -71,12 +68,12 @@ public class SubActivity extends AppCompatActivity {
 
     StringBuilder userBrailles = new StringBuilder();
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
 
-        convert = findViewById(R.id.convert);
         webView = findViewById(R.id.translate);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(new MyJavascriptInterface(), "Android");
@@ -90,6 +87,7 @@ public class SubActivity extends AppCompatActivity {
         listener();
     }
 
+    @SuppressLint("SetTextI18n")
     private void listener() {
         Button btn_put = findViewById(R.id.btn_put), btn_remove = findViewById(R.id.btn_remove), btn_cancel = findViewById(R.id.btn_cancel);
         TextView braille = findViewById(R.id.braille);
@@ -222,72 +220,71 @@ public class SubActivity extends AppCompatActivity {
             return Brailles[30];
         } else if (a && b && c && d && e && !f) {
             return Brailles[31];
-        } else if (!a && !b && !c && !d && !e && f) {
+        } else if (!a && !b && !c && !d && !e) {
             return Brailles[32];
-        } else if (a && !b && !c && !d && !e && f) {
+        } else if (a && !b && !c && !d && !e) {
             return Brailles[33];
-        } else if (!a && b && !c && !d && !e && f) {
+        } else if (!a && b && !c && !d && !e) {
             return Brailles[34];
-        } else if (a && b && !c && !d && !e && f) {
+        } else if (a && b && !c && !d && !e) {
             return Brailles[35];
-        } else if (!a && !b && c && !d && !e && f) {
+        } else if (!a && !b && c && !d && !e) {
             return Brailles[36];
-        } else if (a && !b && c && !d && !e && f) {
+        } else if (a && !b && c && !d && !e) {
             return Brailles[37];
-        } else if (!a && b && c && !d && !e && f) {
+        } else if (!a && b && c && !d && !e) {
             return Brailles[38];
-        } else if (a && b && c && !d && !e && f) {
+        } else if (a && b && c && !d && !e) {
             return Brailles[39];
-        } else if (!a && !b && !c && d && !e && f) {
+        } else if (!a && !b && !c && d && !e) {
             return Brailles[40];
-        } else if (a && !b && !c && d && !e && f) {
+        } else if (a && !b && !c && d && !e) {
             return Brailles[41];
-        } else if (!a && b && !c && d && !e && f) {
+        } else if (!a && b && !c && d && !e) {
             return Brailles[42];
-        } else if (a && b && !c && d && !e && f) {
+        } else if (a && b && !c && d && !e) {
             return Brailles[43];
-        } else if (!a && !b && c && d && !e && f) {
+        } else if (!a && !b && c && d && !e) {
             return Brailles[44];
-        } else if (a && !b && c && d && !e && f) {
+        } else if (a && !b && c && d && !e) {
             return Brailles[45];
-        } else if (!a && b && c && d && !e && f) {
+        } else if (!a && b && c && d && !e) {
             return Brailles[46];
-        } else if (a && b && c && d && !e && f) {
+        } else if (a && b && c && d && !e) {
             return Brailles[47];
-        } else if (!a && !b && !c && !d && e && f) {
+        } else if (!a && !b && !c && !d) {
             return Brailles[48];
-        } else if (a && !b && !c && !d && e && f) {
+        } else if (a && !b && !c && !d) {
             return Brailles[49];
-        } else if (!a && b && !c && !d && e && f) {
+        } else if (!a && b && !c && !d) {
             return Brailles[50];
-        } else if (a && b && !c && !d && e && f) {
+        } else if (a && b && !c && !d) {
             return Brailles[51];
-        } else if (!a && !b && c && !d && e && f) {
+        } else if (!a && !b && c && !d) {
             return Brailles[52];
-        } else if (a && !b && c && !d && e && f) {
+        } else if (a && !b && c && !d) {
             return Brailles[53];
-        } else if (!a && b && c && !d && e && f) {
+        } else if (!a && b && c && !d) {
             return Brailles[54];
-        } else if (a && b && c && !d && e && f) {
+        } else if (a && b && c && !d) {
             return Brailles[55];
-        } else if (!a && !b && !c && d && e && f) {
+        } else if (!a && !b && !c) {
             return Brailles[56];
-        } else if (a && !b && !c && d && e && f) {
+        } else if (a && !b && !c) {
             return Brailles[57];
-        } else if (!a && b && !c && d && e && f) {
+        } else if (!a && b && !c) {
             return Brailles[58];
-        } else if (a && b && !c && d && e && f) {
+        } else if (a && b && !c) {
             return Brailles[59];
-        } else if (!a && !b && c && d && e && f) {
+        } else if (!a && !b) {
             return Brailles[60];
-        } else if (a && !b && c && d && e && f) {
+        } else if (a && !b) {
             return Brailles[61];
-        } else if (!a && b && c && d && e && f) {
+        } else if (!a) {
             return Brailles[62];
-        } else if (a && b && c && d && e && f) {
+        } else {
             return Brailles[63];
         }
-        return null;
     }
 
     private Boolean[] isCheckboxesChecked() {
