@@ -61,6 +61,18 @@ public class SubActivity extends AppCompatActivity {
                         msg.setData(bundle);
                         handler.sendMessage(msg);
                     }
+                    else{
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(SubActivity.this);
+                        dlg.setTitle("오류"); // 제목
+                        dlg.setMessage("로드하는 도중 예상치 못한 문제가 발생하였습니다! 다시 시도해주세요!"); // 메시지
+                        dlg.setPositiveButton("확인", (dialog, which) -> {
+                            Intent intent = new Intent(SubActivity.this, SubActivity.class);
+                            startActivity(intent);
+                            finish();
+                        });
+                        dlg.setCancelable(false);
+                        dlg.show();
+                    }
                 }
             }.start();
         }
