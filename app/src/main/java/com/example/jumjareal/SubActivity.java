@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -27,6 +29,7 @@ import java.util.Objects;
 
 public class SubActivity extends AppCompatActivity {
     WebView webView;
+    AlertDialog globalDialog;
     final Bundle bundle = new Bundle();
     Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
@@ -65,11 +68,7 @@ public class SubActivity extends AppCompatActivity {
                         AlertDialog.Builder dlg = new AlertDialog.Builder(SubActivity.this);
                         dlg.setTitle("오류"); // 제목
                         dlg.setMessage("로드하는 도중 예상치 못한 문제가 발생하였습니다! 다시 시도해주세요!"); // 메시지
-                        dlg.setPositiveButton("확인", (dialog, which) -> {
-                            Intent intent = new Intent(SubActivity.this, SubActivity.class);
-                            startActivity(intent);
-                            finish();
-                        });
+                        dlg.setPositiveButton("확인", (dialog, which) -> globalDialog.dismiss());
                         dlg.setCancelable(false);
                         dlg.show();
                     }
@@ -94,6 +93,17 @@ public class SubActivity extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 view.loadUrl("javascript:window.Android.getHtml(document.getElementsByTagName('body')[0].innerHTML);");
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                AlertDialog.Builder dlg2 = new AlertDialog.Builder(SubActivity.this);
+                dlg2.setTitle("오류"); // 제목
+                dlg2.setMessage("로드하는 도중 예상치 못한 오류가 발생하였습니다! 네트워크 상태를 확인해주세요!"); // 메시지
+                dlg2.setPositiveButton("확인", (dialog, which) -> globalDialog.dismiss());
+                dlg2.setCancelable(false);
+                dlg2.show();
             }
         });
         listener();
@@ -143,14 +153,21 @@ public class SubActivity extends AppCompatActivity {
         ok.setOnClickListener(view -> {
             if (userBrailles.length() != 0) {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(SubActivity.this);
-                dlg.setTitle("로드 중..."); //제목
-                dlg.setMessage("로딩 중입니다. 잠시만 기다려주세요..."); // 메시지
-                dlg.setCancelable(false);
-                dlg.show();
+                globalDialog = dlg.create();
+                globalDialog.setTitle("로드 중..."); //제목
+                globalDialog.setMessage("로딩 중입니다. 잠시만 기다려주세요..."); // 메시지
+                globalDialog.setCancelable(false);
+                globalDialog.show();
                 try {
                     webView.loadUrl("https://t.hi098123.com/braille#share=1&text=" + URLEncoder.encode(userBrailles.toString(), "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
+                    AlertDialog.Builder dlg2 = new AlertDialog.Builder(SubActivity.this);
+                    dlg2.setTitle("오류"); // 제목
+                    dlg2.setMessage("지원하지 않는 인코딩입니다! 다시 시도해주세요!"); // 메시지
+                    dlg2.setPositiveButton("확인", (dialog, which) -> globalDialog.dismiss());
+                    dlg2.setCancelable(false);
+                    dlg2.show();
                 }
             } else {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(SubActivity.this);
