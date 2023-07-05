@@ -10,9 +10,12 @@
 
     <ImageView
         android:id="@+id/img_picked"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:background="@drawable/animation"
         />
     <Button
         android:id="@+id/btn_share"
@@ -20,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:visibility="invisible"
         android:text="공유하기"
         />
     <TextView
@@ -30,6 +34,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="현재 뽑기권 개수: "
+        android:visibility="invisible"
         android:textSize="15sp"
         />
     <LinearLayout
@@ -43,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:visibility="invisible"
             android:text="홈으로 돌아가기"
             />
         <Button
@@ -51,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:visibility="invisible"
             android:text="@string/rePick"
             />
 

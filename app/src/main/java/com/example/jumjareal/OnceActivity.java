@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -32,7 +33,10 @@ public class OnceActivity extends AppCompatActivity {
 
         ImageView img_picked = findViewById(R.id.img_picked);
         int imageId = (int)(Math.random() * images.length);
-        img_picked.setBackgroundResource(images[imageId]);
+        //img_picked.setBackgroundResource(images[imageId]);
+        AnimationDrawable animationDrawable = (AnimationDrawable)img_picked.getBackground();
+        animationDrawable.setOneShot(true);
+        animationDrawable.start();
         getId = imageId;
         listener();
     }
