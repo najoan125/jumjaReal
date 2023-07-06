@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#E8E8E8" /> <!-- 배경 색상 -->
+    <stroke
+            android:width="2dp"
+            android:color="@color/black"/> //선색
+    <corners android:radius="20dp" /> <!-- 원하는 모서리 반지름 -->
+</shape>

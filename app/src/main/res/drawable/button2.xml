@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <solid android:color="#FF7F50" /> //배경색
+    <solid android:color="#F49471" /> //배경색
 
     <stroke
             android:width="3dp"

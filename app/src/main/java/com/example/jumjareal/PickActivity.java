@@ -17,7 +17,7 @@ public class PickActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick);
         TextView coupon = findViewById(R.id.coupon);
-        coupon.setText("현재 뽑기권 개수: "+MainActivity.coupon);
+        coupon.setText("현재 열쇠 개수: "+MainActivity.coupon);
         listener();
     }
 
@@ -32,8 +32,8 @@ public class PickActivity extends AppCompatActivity {
             }
             else {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(PickActivity.this);
-                dlg.setTitle("뽑기권 부족"); //제목
-                dlg.setMessage("뽑기권을 모두 소진하셨습니다! 점자 번역 기능을 통해 뽑기권을 더 얻으세요!"); // 메시지
+                dlg.setTitle("열쇠 부족"); //제목
+                dlg.setMessage("열쇠가 부족합니다!"); // 메시지
 //                버튼 클릭시 동작
                 dlg.setPositiveButton("확인", (dialog, which) -> {
                     Intent intent = new Intent(PickActivity.this, SubActivity.class);
@@ -45,7 +45,7 @@ public class PickActivity extends AppCompatActivity {
         });
 
         btn_cancel.setOnClickListener(view -> {
-            Intent intent = new Intent(PickActivity.this, MainActivity.class);
+            Intent intent = new Intent(PickActivity.this, SubActivity.class);
             startActivity(intent);
             finish();
         });

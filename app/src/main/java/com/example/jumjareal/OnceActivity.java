@@ -32,7 +32,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class OnceActivity extends AppCompatActivity {
-    int[] images = new int[]{R.drawable.bichon01, R.drawable.bichon02, R.drawable.bichon03,
+    public static int[] images = new int[]{R.drawable.bichon01, R.drawable.bichon02, R.drawable.bichon03,
             R.drawable.frenh01, R.drawable.frenh02, R.drawable.frenh03,
             R.drawable.welsh01, R.drawable.welsh02};
     int getId = 0;
@@ -45,13 +45,16 @@ public class OnceActivity extends AppCompatActivity {
 
         //current coupon count
         TextView coupon = findViewById(R.id.coupon);
-        coupon.setText("현재 뽑기권 개수: " + MainActivity.coupon);
+        coupon.setText("현재 열쇠 개수: " + MainActivity.coupon);
 
         //random item image
         ImageView item = findViewById(R.id.item);
         int imageId = (int) (Math.random() * images.length);
         item.setImageResource(images[imageId]);
         getId = imageId;
+
+        //save inventory
+        InventoryActivity.inventory.add(images[imageId]);
 
         //pickup chest animation
         ImageView gif_chest = findViewById(R.id.gif_chest);
@@ -134,8 +137,8 @@ public class OnceActivity extends AppCompatActivity {
                 finish();
             } else {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(OnceActivity.this);
-                dlg.setTitle("뽑기권 부족");
-                dlg.setMessage("뽑기권을 모두 소진하셨습니다! 점자 번역 기능을 통해 뽑기권을 더 얻으세요!");
+                dlg.setTitle("열쇠 부족");
+                dlg.setMessage("열쇠가 부족합니다!");
                 dlg.setPositiveButton("확인", (dialog, which) -> {
                     Intent intent = new Intent(OnceActivity.this, SubActivity.class);
                     startActivity(intent);

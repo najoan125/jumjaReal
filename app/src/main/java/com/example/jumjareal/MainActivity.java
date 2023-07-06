@@ -21,16 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void listener(){
         btn_start = findViewById(R.id.btn_start);
-        Button btn_pick = findViewById(R.id.btn_pick);
 
         btn_start.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, SubActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        btn_pick.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, PickActivity.class);
             startActivity(intent);
             finish();
         });

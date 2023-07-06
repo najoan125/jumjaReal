@@ -16,7 +16,7 @@ public class CompleteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete);
         TextView couponQuantity = findViewById(R.id.coupon);
-        couponQuantity.setText("현재 뽑기권 개수: "+MainActivity.coupon);
+        couponQuantity.setText("현재 열쇠 개수: "+MainActivity.coupon);
         listener();
     }
 

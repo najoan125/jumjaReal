@@ -10,6 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/mainbackground"
+            android:scaleType="fitStart"
             android:alpha="0.7"
             />
     <LinearLayout
@@ -22,7 +23,7 @@
 
         <TextView
                 android:id="@+id/welcomeText"
-                android:layout_width="wrap_content"
+                android:layout_width="234dp"
                 android:layout_height="wrap_content"
                 android:text="@string/braille"
                 android:shadowColor="@color/black"
@@ -36,7 +37,7 @@
                 />
 
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="167dp"
                 android:layout_height="wrap_content"
                 android:text="@string/game"
                 android:textColor="#FFFFFF"

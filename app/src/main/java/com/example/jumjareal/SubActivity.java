@@ -108,8 +108,15 @@ public class SubActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void listener() {
-        Button btn_put = findViewById(R.id.btn_put), btn_remove = findViewById(R.id.btn_remove), btn_cancel = findViewById(R.id.btn_cancel);
+        Button btn_put = findViewById(R.id.btn_put), btn_remove = findViewById(R.id.btn_remove), btn_cancel = findViewById(R.id.btn_cancel),
+                btn_inventory = findViewById(R.id.btn_inventory);
         TextView braille = findViewById(R.id.braille);
+
+        btn_inventory.setOnClickListener(view -> {
+            Intent intent = new Intent(SubActivity.this, InventoryActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         //입력 버튼
         btn_put.setOnClickListener(view -> {

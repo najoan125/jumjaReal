@@ -5,12 +5,24 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:gravity="center"
+              android:background="#A4EFDE8D"
               tools:context=".SubActivity">
 
 
+    <ImageView
+            android:layout_width="161dp"
+            android:layout_height="173dp"
+            android:src="@drawable/key"
+            />
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="6"
             android:text="@string/got_a_coupon"
             android:textSize="23sp"
             android:layout_gravity="center"
@@ -19,12 +31,19 @@
 
     <TextView
             android:id="@+id/coupon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="6"
             android:text="@string/current_coupon_count"
             android:textSize="15sp"
             android:layout_gravity="center"
             android:gravity="center"
+            android:layout_marginBottom="20dp"
             />
 
     <LinearLayout
@@ -37,13 +56,20 @@
                 android:id="@+id/btn_re"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button2"
+                android:layout_marginEnd="10dp"
                 android:text="@string/get_it_back"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 tools:ignore="ButtonStyle"/>
 
         <Button
                 android:id="@+id/btn_go"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button4"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:text="@string/ok"
                 tools:ignore="ButtonStyle"/>
     </LinearLayout>
