@@ -1,146 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:orientation="vertical"
-              tools:context=".SubActivity">
-
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/put_brailles_to_get_coupon"
-            android:textSize="23sp"/>
-
-    <WebView
-            android:id="@+id/translate"
-            android:layout_width="1dp"
-            android:layout_height="1dp"/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_height="match_parent"
+             android:layout_width="match_parent">
 
     <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            tools:context=".SubActivity"
+            tools:ignore="UselessParent">
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/put_brailles_to_get_coupon"
+                android:textSize="23sp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="(한 글자씩 입력)"
+                android:textSize="20sp"/>
+
+        <WebView
+                android:id="@+id/translate"
+                android:layout_width="1dp"
+                android:layout_height="1dp"/>
 
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-            <CheckBox
-                    android:id="@+id/checkbox1"
+            <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <CheckBox
-                    android:id="@+id/checkbox2"
+                <CheckBox
+                        android:id="@+id/checkbox1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                <CheckBox
+                        android:id="@+id/checkbox2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                <CheckBox
+                        android:id="@+id/checkbox3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <CheckBox
-                    android:id="@+id/checkbox3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
+                <CheckBox
+                        android:id="@+id/checkbox4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                <CheckBox
+                        android:id="@+id/checkbox5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                <CheckBox
+                        android:id="@+id/checkbox6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
+
+
+        <TextView
+                android:id="@+id/braille"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/input_string"
+                android:textSize="18sp"/>
 
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-            <CheckBox
-                    android:id="@+id/checkbox4"
+            <Button
+                    android:id="@+id/btn_remove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
+                    android:layout_marginEnd="10sp"
+                    android:text="@string/remove"
+                    tools:ignore="ButtonStyle"/>
 
-            <CheckBox
-                    android:id="@+id/checkbox5"
+            <Button
+                    android:id="@+id/btn_put"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
-
-            <CheckBox
-                    android:id="@+id/checkbox6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
+                    android:text="@string/put"
+                    tools:ignore="ButtonStyle"/>
         </LinearLayout>
-    </LinearLayout>
 
-
-    <TextView
-            android:id="@+id/braille"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/input_string"
-            android:textSize="18sp"/>
-
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-        <Button
-                android:id="@+id/btn_remove"
+        <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10sp"
-                android:text="@string/remove"
-                tools:ignore="ButtonStyle"/>
-
-        <Button
-                android:id="@+id/btn_put"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/put"
-                tools:ignore="ButtonStyle"/>
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50sp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-        <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="10sp"
+                android:layout_marginTop="50sp"
                 android:gravity="center"
-                android:text="@string/cancel"
-                tools:ignore="ButtonStyle"/>
+                android:orientation="horizontal">
 
-        <Button
-                android:id="@+id/btn_ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/ok"
-                tools:ignore="ButtonStyle"/>
+            <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10sp"
+                    android:gravity="center"
+                    android:text="@string/cancel"
+                    tools:ignore="ButtonStyle"/>
+
+            <Button
+                    android:id="@+id/btn_ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/ok"
+                    tools:ignore="ButtonStyle"/>
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-</LinearLayout>
+</FrameLayout>

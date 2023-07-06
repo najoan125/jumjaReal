@@ -27,6 +27,7 @@ import androidx.core.app.ShareCompat;
 import androidx.core.content.FileProvider;
 
 import java.io.*;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -111,8 +112,8 @@ public class OnceActivity extends AppCompatActivity {
             Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
 
-            Uri photoURI = FileProvider.getUriForFile(getApplicationContext(),
-                    getApplicationContext().getPackageName(),
+            Uri photoURI = FileProvider.getUriForFile(this,
+                    getPackageName(),
                     file);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             shareIntent.putExtra(Intent.EXTRA_STREAM, photoURI);

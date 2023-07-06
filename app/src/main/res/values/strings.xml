@@ -8,7 +8,7 @@
     <string name="braille">Braille</string>
     <string name="start">START!</string>
     <string name="pickup">뽑기</string>
-    <string name="share">공유하기</string>
+    <string name="share">공유 및 저장</string>
     <string name="go_home">홈으로 돌아가기</string>
     <string name="pick_right_now">지금 바로 뽑고 친구와 공유하세요!</string>
     <string name="cancel">취소</string>
@@ -19,4 +19,14 @@
     <string name="put">입력</string>
     <string name="pickup_chest">뽑기상자</string>
     <string name="pickup_item">Pickup_item</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="game">Game</string>
 </resources>
