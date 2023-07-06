@@ -3,13 +3,16 @@ package com.example.jumjareal;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
 import androidx.core.content.FileProvider;
 
 import java.io.*;
@@ -99,27 +103,21 @@ public class OnceActivity extends AppCompatActivity {
         Button btn_share = findViewById(R.id.btn_share), btn_home = findViewById(R.id.btn_home), btn_re = findViewById(R.id.btn_re);
         btn_share.setOnClickListener(view -> {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[getId]);
-            // 이미지를 공유할 때 사용할 임시 파일 생성
-            File imageFile = new File(getCacheDir(), "image.png");
-            try {
-                OutputStream outputStream = new FileOutputStream(imageFile);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-                outputStream.flush();
-                outputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-// 이미지를 공유하는 인텐트 생성
-            Uri imageUri = FileProvider.getUriForFile(getApplicationContext(), getPackageName() + ".fileprovider", imageFile);
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("image/png");
+            String fileName = getString(R.string.app_name) + System.currentTimeMillis() + ".jpeg";
+
+            File file = saveImageIntoFileFromUri(getApplicationContext(), bitmap, fileName, getExternalFilePath(getApplicationContext()));
+
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+
+            Uri photoURI = FileProvider.getUriForFile(getApplicationContext(),
+                    getApplicationContext().getPackageName(),
+                    file);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-
-// 공유 인텐트 시작
-            startActivity(Intent.createChooser(shareIntent, "이미지 공유"));
-
+            shareIntent.putExtra(Intent.EXTRA_STREAM, photoURI);
+            shareIntent.setType("image/jpg");
+            startActivity(Intent.createChooser(shareIntent, "Title"));
         });
 
         btn_home.setOnClickListener(view -> {
@@ -145,5 +143,35 @@ public class OnceActivity extends AppCompatActivity {
                 dlg.show();
             }
         });
+    }
+    public static File saveImageIntoFileFromUri(Context context, Bitmap bitmap, String fileName, String path) {
+        File file = new File(path, fileName);
+
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            switch(file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf(".") + 1)){
+                case "jpeg":
+                case "jpg":
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+                    break;
+                case "png":
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+                    break;
+            }
+
+            fileOutputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Log.e("Utils","saveImageIntoFileFromUri FileNotFoundException : "+ e.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Utils","saveImageIntoFileFromUri IOException : "+ e.toString());
+        }
+        return file;
+    }
+
+    public static String getExternalFilePath(Context context) {
+        String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) +"/";
+        return filePath;
     }
 }
