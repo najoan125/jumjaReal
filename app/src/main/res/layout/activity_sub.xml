@@ -17,7 +17,7 @@
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:id="@+id/btn_cancel"
-                android:text="뒤로"/>
+                android:text="@string/back"/>
 
         <Button
                 android:layout_width="wrap_content"
@@ -25,8 +25,8 @@
                 android:background="#00000000"
                 android:id="@+id/btn_inventory"
                 android:layout_gravity="right"
-                android:text="보관함"
-                />
+                android:text="@string/inventory"
+                tools:ignore="RtlHardcoded"/>
 
         <Button
                 android:layout_width="wrap_content"
@@ -34,7 +34,8 @@
                 android:layout_gravity="right"
                 android:id="@+id/btn_once"
                 android:background="#00000000"
-                android:text="@string/pick_once"/>
+                android:text="@string/pick_once"
+                tools:ignore="RtlHardcoded"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -44,13 +45,45 @@
             android:src="@drawable/sub_activity_background"
             android:alpha="0.35"
             android:contentDescription="TODO"/>
+    <TextView
+            android:layout_marginTop="65dp"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_marginEnd="10dp"
+            android:textStyle="bold"
+            android:background="@drawable/textview2"
+            android:textSize="18sp"
+            tools:ignore="RtlHardcoded"/>
+    <ImageView
+            android:layout_marginTop="67dp"
+            android:layout_gravity="right"
+            android:layout_marginEnd="45dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/key"
+            android:contentDescription="TODO"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="63dp"
+            android:layout_gravity="right"
+            android:id="@+id/keycount"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"/>
 
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="60sp"
+            android:layout_marginTop="100sp"
             android:layout_gravity="center_horizontal">
 
         <TextView

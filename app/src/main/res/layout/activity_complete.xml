@@ -53,17 +53,6 @@
             android:orientation="horizontal">
 
         <Button
-                android:id="@+id/btn_re"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button2"
-                android:layout_marginEnd="10dp"
-                android:text="@string/get_it_back"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                tools:ignore="ButtonStyle"/>
-
-        <Button
                 android:id="@+id/btn_go"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

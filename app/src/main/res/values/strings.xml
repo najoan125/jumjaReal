@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">jumjaReal</string>
-    <string name="rePick">다시 뽑기</string>
+    <string name="rePick">다시 열기</string>
     <string name="got_a_coupon">열쇠 1개를 획득하였습니다!</string>
     <string name="current_coupon_count">현재 열쇠 개수:</string>
     <string name="get_it_back">다시 얻기</string>
@@ -12,7 +12,7 @@
     <string name="go_home">홈으로 돌아가기</string>
     <string name="pick_right_now">상자 열기!</string>
     <string name="cancel">취소</string>
-    <string name="pick_once">1회 뽑기</string>
+    <string name="pick_once">상자 열기</string>
     <string name="put_brailles_to_get_coupon">점자를 입력하여 열쇠를 얻으세요!</string>
     <string name="input_string"> 입력한 문자 </string>
     <string name="remove">지우기</string>
@@ -31,4 +31,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="game">Game</string>
     <string name="inputBraille"><![CDATA[<점자 입력>]]></string>
+    <string name="back">뒤로</string>
+    <string name="inventory">보관함</string>
 </resources>

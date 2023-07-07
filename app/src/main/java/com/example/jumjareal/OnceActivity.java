@@ -81,11 +81,11 @@ public class OnceActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 Button btn_share = findViewById(R.id.btn_share),
-                        btn_home = findViewById(R.id.btn_home),
+                        btn_back = findViewById(R.id.btn_back),
                         btn_re = findViewById(R.id.btn_re);
                 TextView coupon = findViewById(R.id.coupon);
                 btn_share.setVisibility(View.VISIBLE);
-                btn_home.setVisibility(View.VISIBLE);
+                btn_back.setVisibility(View.VISIBLE);
                 btn_re.setVisibility(View.VISIBLE);
                 coupon.setVisibility(View.VISIBLE);
             }
@@ -104,7 +104,7 @@ public class OnceActivity extends AppCompatActivity {
 
     private void listener() {
         //공유 버튼
-        Button btn_share = findViewById(R.id.btn_share), btn_home = findViewById(R.id.btn_home), btn_re = findViewById(R.id.btn_re);
+        Button btn_share = findViewById(R.id.btn_share), btn_back = findViewById(R.id.btn_back), btn_re = findViewById(R.id.btn_re);
         btn_share.setOnClickListener(view -> {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[getId]);
 
@@ -124,8 +124,8 @@ public class OnceActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(shareIntent, "Title"));
         });
 
-        btn_home.setOnClickListener(view -> {
-            Intent intent = new Intent(OnceActivity.this, MainActivity.class);
+        btn_back.setOnClickListener(view -> {
+            Intent intent = new Intent(OnceActivity.this, SubActivity.class);
             startActivity(intent);
             finish();
         });

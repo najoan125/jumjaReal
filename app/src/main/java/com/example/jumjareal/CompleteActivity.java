@@ -21,17 +21,11 @@ public class CompleteActivity extends AppCompatActivity {
     }
 
     private void listener(){
-        Button btn_re, btn_go;
-        btn_re = findViewById(R.id.btn_re);
-        btn_re.setOnClickListener(view -> {
-            Intent intent = new Intent(CompleteActivity.this, SubActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        Button btn_go;
 
         btn_go = findViewById(R.id.btn_go);
         btn_go.setOnClickListener(view ->{
-            Intent intent = new Intent(CompleteActivity.this, PickActivity.class);
+            Intent intent = new Intent(CompleteActivity.this, SubActivity.class);
             startActivity(intent);
             finish();
         });

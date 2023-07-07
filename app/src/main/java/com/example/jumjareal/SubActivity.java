@@ -76,11 +76,13 @@ public class SubActivity extends AppCompatActivity {
 
     StringBuilder userBrailles = new StringBuilder();
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint({"SetJavaScriptEnabled", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
+        TextView coupon = findViewById(R.id.keycount);
+        coupon.setText(String.valueOf(MainActivity.coupon));
 
         webView = findViewById(R.id.translate);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -109,8 +111,14 @@ public class SubActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void listener() {
         Button btn_put = findViewById(R.id.btn_put), btn_remove = findViewById(R.id.btn_remove), btn_cancel = findViewById(R.id.btn_cancel),
-                btn_inventory = findViewById(R.id.btn_inventory);
+                btn_inventory = findViewById(R.id.btn_inventory), btn_once = findViewById(R.id.btn_once);
         TextView braille = findViewById(R.id.braille);
+
+        btn_once.setOnClickListener(view -> {
+            Intent intent = new Intent(SubActivity.this, PickActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         btn_inventory.setOnClickListener(view -> {
             Intent intent = new Intent(SubActivity.this, InventoryActivity.class);

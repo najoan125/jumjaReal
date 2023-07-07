@@ -73,13 +73,13 @@
             android:gravity="center">
 
         <Button
-                android:id="@+id/btn_home"
-                android:layout_width="144dp"
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:visibility="invisible"
-                android:text="@string/go_home"
+                android:text="@string/back"
                 android:background="@drawable/button2"
                 android:textColor="@color/white"
                 android:textStyle="bold"
