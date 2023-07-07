@@ -4,14 +4,28 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:gravity="center"
               android:background="#A4EFDE8D"
               tools:context=".OnceActivity">
 
     <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
+            android:layout_width="match_parent"
+            android:layout_marginTop="50sp"
+            android:layout_height="370dp">
+        <TextView
+                android:id="@+id/legendary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/legendary"
+                android:textSize="40sp"
+                android:textColor="#FFB74D"
+                android:textStyle="bold"
+                android:shadowColor="@color/black"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="6"
+                android:gravity="center"
+                android:visibility="invisible"
+                />
         <ImageView
                 android:id="@+id/gif_chest"
                 android:layout_width="300dp"
@@ -25,14 +39,25 @@
         <ImageView
                 android:id="@+id/item"
                 android:layout_gravity="center"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:alpha="0"
                 android:background="@color/white"
                 android:contentDescription="@string/pickup_item"/>
+
     </FrameLayout>
+        <TextView
+                android:layout_marginTop="-70dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="230sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/tip"
+                android:textSize="14sp"
+                />
 
     <Button
             android:id="@+id/btn_share"
@@ -48,7 +73,7 @@
             />
 
     <TextView
-            android:layout_marginTop="50sp"
+            android:layout_marginTop="30sp"
             android:id="@+id/coupon"
             android:layout_width="259dp"
             android:layout_height="34dp"

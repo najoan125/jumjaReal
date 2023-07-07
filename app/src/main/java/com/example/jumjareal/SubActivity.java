@@ -81,8 +81,12 @@ public class SubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
-        TextView coupon = findViewById(R.id.keycount);
-        coupon.setText(String.valueOf(MainActivity.coupon));
+        TextView coupon = findViewById(R.id.key_count);
+        if (MainActivity.coupon < 10)
+            coupon.setText("0"+MainActivity.coupon);
+        else{
+            coupon.setText(String.valueOf(MainActivity.coupon));
+        }
 
         webView = findViewById(R.id.translate);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -123,6 +127,7 @@ public class SubActivity extends AppCompatActivity {
         btn_inventory.setOnClickListener(view -> {
             Intent intent = new Intent(SubActivity.this, InventoryActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         });
 
@@ -149,6 +154,7 @@ public class SubActivity extends AppCompatActivity {
         btn_cancel.setOnClickListener(view -> {
             Intent intent = new Intent(SubActivity.this, MainActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         });
 
@@ -209,7 +215,7 @@ public class SubActivity extends AppCompatActivity {
     }
 
     private String convert(boolean a, boolean b, boolean c, boolean d, boolean e, boolean f) {
-        String[] Brailles = new String[]{"⠀", "⠁", "⠂", "⠃", "⠄", "⠅", "⠆", "⠇", "⠈", "⠉", "⠊", "⠋", "⠌", "⠍", "⠎", "⠏",
+        String[] Brailles = new String[]{"", "⠁", "⠂", "⠃", "⠄", "⠅", "⠆", "⠇", "⠈", "⠉", "⠊", "⠋", "⠌", "⠍", "⠎", "⠏",
                 "⠐", "⠑", "⠒", "⠓", "⠔", "⠕", "⠖", "⠗", "⠘", "⠙", "⠚", "⠛", "⠜", "⠝", "⠞", "⠟",
                 "⠠", "⠡", "⠢", "⠣", "⠤", "⠥", "⠦", "⠧", "⠨", "⠩", "⠪", "⠫", "⠬", "⠭", "⠮", "⠯",
                 "⠰", "⠱", "⠲", "⠳", "⠴", "⠵", "⠶", "⠷", "⠸", "⠹", "⠺", "⠻", "⠼", "⠽", "⠾", "⠿"};

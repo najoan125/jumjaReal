@@ -3,6 +3,6 @@
     <solid android:color="#E8E8E8" /> <!-- 배경 색상 -->
     <stroke
             android:width="2dp"
-            android:color="@color/black"/> //선색
+            android:color="@color/black"/>
     <corners android:radius="20dp" /> <!-- 원하는 모서리 반지름 -->
 </shape>

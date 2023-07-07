@@ -28,6 +28,7 @@ public class PickActivity extends AppCompatActivity {
                 MainActivity.coupon--;
                 Intent intent = new Intent(PickActivity.this, OnceActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
                 finish();
             }
             else {
@@ -38,6 +39,7 @@ public class PickActivity extends AppCompatActivity {
                 dlg.setPositiveButton("확인", (dialog, which) -> {
                     Intent intent = new Intent(PickActivity.this, SubActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     finish();
                 });
                 dlg.show();
@@ -47,6 +49,7 @@ public class PickActivity extends AppCompatActivity {
         btn_cancel.setOnClickListener(view -> {
             Intent intent = new Intent(PickActivity.this, SubActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         });
     }

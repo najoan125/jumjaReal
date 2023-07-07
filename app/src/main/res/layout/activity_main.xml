@@ -12,7 +12,7 @@
             android:src="@drawable/mainbackground"
             android:scaleType="fitStart"
             android:alpha="0.7"
-            />
+            android:contentDescription="@string/cat"/>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

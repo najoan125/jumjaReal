@@ -33,4 +33,11 @@
     <string name="inputBraille"><![CDATA[<점자 입력>]]></string>
     <string name="back">뒤로</string>
     <string name="inventory">보관함</string>
+    <string name="legendary">전설</string>
+    <string name="img_key">img_key</string>
+    <string name="cat">cat</string>
+    <string name="background">background</string>
+    <string name="two_zeros">00</string>
+    <string name="put_one_letter">(한 글자씩 입력)</string>
+    <string name="layout">layout</string>
 </resources>

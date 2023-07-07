@@ -27,6 +27,7 @@ public class CompleteActivity extends AppCompatActivity {
         btn_go.setOnClickListener(view ->{
             Intent intent = new Intent(CompleteActivity.this, SubActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         });
     }

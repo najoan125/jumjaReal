@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         btn_start.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, SubActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         });
     }
